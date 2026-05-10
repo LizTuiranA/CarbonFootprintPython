@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# IntelliJ / JetBrains
+.idea/
+*.iml
+out/
+
+# Java / Maven
+target/
+.mvn/
+
+# OS
+.DS_Store
+Thumbs.db

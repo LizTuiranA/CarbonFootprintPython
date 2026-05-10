@@ -1,0 +1,21 @@
+[
+  {
+    "tipo": "Edificio",
+    "nombre": "Bloque A",
+    "consumo_energia_mensual": 1200.0,
+    "factor_emision": 0.45
+  },
+  {
+    "tipo": "Automovil",
+    "placa": "ABC123",
+    "kilometros_recorridos": 800.0,
+    "consumo_por_kilometro": 0.08,
+    "factor_emision": 2.31
+  },
+  {
+    "tipo": "Bicicleta",
+    "marca": "EcoBike",
+    "kilometros_recorridos": 300.0,
+    "factor_emision_indirecta": 0.01
+  }
+]
