@@ -37,6 +37,9 @@ CarbonFootprintPython/
 |- pytest.ini
 |- data/
 |  |- huella_carbono.json
+|- docs/
+|  |- analisis_diseno.md
+|  |- guia_video.md
 |- app/
 |  |- __init__.py
 |  |- main.py
@@ -98,6 +101,12 @@ git branch -a
 git status
 ```
 
+## Documentacion
+
+- Documento principal: `README.md`
+- Analisis de diseno: `docs/analisis_diseno.md`
+- Guia de sustentacion: `docs/guia_video.md`
+
 ## Evidencias
 
 > Nota: se deja preparada la seccion para adjuntar capturas cuando esten disponibles.
@@ -147,4 +156,6 @@ git status
 ### Evidencia 8 - Documentacion
 
 - README completo en `README.md`.
+- Analisis de diseno en `docs/analisis_diseno.md`.
+- Guia de video en `docs/guia_video.md`.
 - Imagen pendiente: `docs/evidencias/08-documentacion.png`
