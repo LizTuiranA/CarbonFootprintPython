@@ -110,40 +110,42 @@ git status
 ## Evidencias
 
 > Nota: se deja preparada la seccion para adjuntar capturas cuando esten disponibles.
-> Ruta sugerida para imagenes: `docs/evidencias/`.
+> Ruta actual de imagenes: `evidencias/`.
 
 ### Evidencia 1 - Git
 
 - Mostrar ramas locales y remotas con `git branch -a`.
 - Confirmar rama activa `dev_ltuiran07` con `git status`.
-- Imagen pendiente: `docs/evidencias/01-git.png`
+- Captura: [01 GIT.jpg](evidencias/01%20GIT.jpg)
 
 ### Evidencia 2 - Estructura del proyecto
 
 - Mostrar arbol del proyecto segun la seccion de estructura.
-- Imagen pendiente: `docs/evidencias/02-estructura-proyecto.png`
+- Captura: [02 Estructura del proyecto.jpg](evidencias/02%20Estructura%20del%20proyecto.jpg)
 
 ### Evidencia 3 - Instalacion de dependencias
 
 - Ejecutar `pip install -r requirements.txt` sin errores.
-- Imagen pendiente: `docs/evidencias/03-instalacion-dependencias.png`
+- Captura: [03 Instalacion de dependencias.jpg](evidencias/03%20Instalacion%20de%20dependencias.jpg)
 
 ### Evidencia 4 - Pruebas unitarias
 
 - Ejecutar `pytest -q`.
 - Resultado esperado: `12 passed`.
-- Imagen pendiente: `docs/evidencias/04-pruebas-unitarias.png`
+- Captura: [04 Pruebas Unitarias.jpg](evidencias/04%20Pruebas%20Unitarias.jpg)
 
 ### Evidencia 5 - Ejecucion del programa
 
 - Ejecutar `python -m app.main`.
 - Mostrar huella por objeto, total y datos leidos desde JSON.
-- Imagen pendiente: `docs/evidencias/05-ejecucion-programa.png`
+- Captura: [05 Ejecucion del programa.jpg](evidencias/05%20Ejecucion%20del%20programa.jpg)
 
 ### Evidencia 6 - Archivo generado
 
 - Verificar creacion de `data/huella_carbono.json`.
-- Imagen pendiente: `docs/evidencias/06-archivo-generado.png`
+- Capturas:
+  - [06-0 archivo generado.jpg](evidencias/06-0%20archivo%20generado.jpg)
+  - [06-1 archivo generado.jpg](evidencias/06-1%20archivo%20generado.jpg)
 
 ### Evidencia 7 - Codigo fuente clave
 
@@ -151,11 +153,20 @@ git status
 - Clases de dominio: `modelo/edificio.py`, `modelo/automovil.py`, `modelo/bicicleta.py`.
 - Persistencia: `persistencia/repositorio_huella_json.py`.
 - Main y polimorfismo: `app/main.py`.
-- Imagen pendiente: `docs/evidencias/07-codigo-fuente-clave.png`
+- Capturas:
+  - [07-0 Codigo Fuente Clave.jpg](evidencias/07-0%20Codigo%20Fuente%20Clave.jpg)
+  - [07-1 Codigo Fuente Clave.jpg](evidencias/07-1%20Codigo%20Fuente%20Clave.jpg)
+  - [07-2 Codigo Fuente Clave.jpg](evidencias/07-2%20Codigo%20Fuente%20Clave.jpg)
+  - [07-3 Codigo Fuente Clave.jpg](evidencias/07-3%20Codigo%20Fuente%20Clave.jpg)
+  - [07-4 Codigo Fuente Clave.jpg](evidencias/07-4%20Codigo%20Fuente%20Clave.jpg)
+  - [07-5 Codigo Fuente Clave.jpg](evidencias/07-5%20Codigo%20Fuente%20Clave.jpg)
 
 ### Evidencia 8 - Documentacion
 
 - README completo en `README.md`.
 - Analisis de diseno en `docs/analisis_diseno.md`.
 - Guia de video en `docs/guia_video.md`.
-- Imagen pendiente: `docs/evidencias/08-documentacion.png`
+- Capturas:
+  - [08-0 documentacion.jpg](evidencias/08-0%20documentacion.jpg)
+  - [08-1 documentacion.jpg](evidencias/08-1%20documentacion.jpg)
+  - [08-2 documentacion.jpg](evidencias/08-2%20documentacion.jpg)
