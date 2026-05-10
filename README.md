@@ -1,101 +1,150 @@
-# Actividad 5 - Huella de Carbono (Python)
+# Carbon Footprint Python
 
-Proyecto académico orientado a objetos para modelar elementos con huella de carbono o consumo estimado.
+Proyecto academico en Python para modelar objetos con huella de carbono mediante clases no relacionadas por herencia (`Edificio`, `Automovil` y `Bicicleta`) que implementan una interfaz comun (`CalculableHuellaCarbono`).
 
-## Descripcion del proyecto
+## Caso de estudio
 
-El sistema modela tres tipos de objetos (`Edificio`, `Automovil` y `Bicicleta`) que comparten un contrato comun para calcular su huella de carbono. La aplicacion:
+Se modelan tres tipos de objetos del mundo real que generan impacto ambiental de formas distintas:
 
-1. Crea objetos del dominio.
-2. Usa polimorfismo para calcular su huella.
-3. Guarda los objetos en un archivo JSON.
-4. Lee nuevamente el JSON y muestra los datos recuperados.
+- `Edificio`: huella por consumo de energia mensual y factor de emision.
+- `Automovil`: huella por kilometros recorridos, consumo por kilometro y factor de emision.
+- `Bicicleta`: huella indirecta por kilometros recorridos y factor de emision indirecta.
 
-## Interfaz `CalculableHuellaCarbono`
+La integracion se hace mediante una interfaz compartida para habilitar polimorfismo y cumplir el enunciado de clases no relacionadas entre si por herencia.
 
-Se implementa como clase abstracta (`ABC`) en `modelo/calculable_huella_carbono.py`.
+## Conceptos aplicados
 
-- Metodo principal: `calcular_huella_carbono() -> float`
-- Metodo de soporte para persistencia: `a_dict() -> dict`
-
-Este diseno permite aplicar sustitucion de Liskov y depender de abstracciones.
-
-## Objetos implementados
-
-- `Edificio` (`modelo/edificio.py`)
-  - Atributos: `nombre`, `consumo_energia_mensual`, `factor_emision`
-  - Formula: `consumo_energia_mensual * factor_emision`
-
-- `Automovil` (`modelo/automovil.py`)
-  - Atributos: `placa`, `kilometros_recorridos`, `consumo_por_kilometro`, `factor_emision`
-  - Formula: `kilometros_recorridos * consumo_por_kilometro * factor_emision`
-
-- `Bicicleta` (`modelo/bicicleta.py`)
-  - Atributos: `marca`, `kilometros_recorridos`, `factor_emision_indirecta`
-  - Formula: `kilometros_recorridos * factor_emision_indirecta`
-
-## Polimorfismo
-
-En `app/main.py`, los objetos se almacenan en una lista de tipo `CalculableHuellaCarbono`. El servicio `ServicioHuellaCarbono` recorre la lista sin depender de clases concretas, cumpliendo OCP y DIP.
-
-## Guardado y lectura de JSON
-
-La capa de persistencia esta en `persistencia/repositorio_huella_json.py`.
-
-- Guardado: `guardar(objetos)` serializa a `data/huella_carbono.json`.
-- Lectura: `leer()` deserializa y reconstruye objetos por campo `tipo`.
+- **Interfaz:** `CalculableHuellaCarbono` define el contrato comun (`calcular_huella_carbono`, `a_dict`).
+- **Polimorfismo:** una lista de `CalculableHuellaCarbono` contiene objetos de distintos tipos.
+- **Modularidad:** separacion por paquetes `modelo`, `servicio`, `persistencia`, `app`, `prueba`.
+- **Reutilizacion:** `RepositorioHuellaJSON` sirve para cualquier objeto que implemente la interfaz.
+- **Manejo de archivos:** escritura y lectura en `data/huella_carbono.json`.
+- **Pruebas unitarias:** pruebas con `pytest` por clase, servicio y persistencia.
+- **SOLID:**
+  - `SRP`: cada modulo tiene una responsabilidad clara.
+  - `OCP`: se pueden agregar nuevas fuentes sin romper la logica central.
+  - `LSP`: todas las clases implementadoras son sustituibles por la interfaz.
+  - `ISP`: interfaz pequena con solo lo necesario.
+  - `DIP`: flujo principal depende de la abstraccion.
 
 ## Estructura del proyecto
 
 ```text
-app/
-modelo/
-persistencia/
-prueba/
-servicio/
-data/
+CarbonFootprintPython/
+|- README.md
+|- requirements.txt
+|- .gitignore
+|- pytest.ini
+|- data/
+|  |- huella_carbono.json
+|- app/
+|  |- __init__.py
+|  |- main.py
+|- modelo/
+|  |- __init__.py
+|  |- calculable_huella_carbono.py
+|  |- edificio.py
+|  |- automovil.py
+|  |- bicicleta.py
+|- servicio/
+|  |- __init__.py
+|  |- servicio_huella_carbono.py
+|- persistencia/
+|  |- __init__.py
+|  |- repositorio_huella_json.py
+|- prueba/
+   |- test_huella_carbono.py
 ```
 
-## Como ejecutar el programa
+## Ejecucion
 
-1. Instalar dependencias:
+Instalar dependencias:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Ejecutar la app:
-
-```bash
-python -m app.main
-```
-
-## Como ejecutar las pruebas unitarias
+Ejecutar pruebas:
 
 ```bash
 pytest -q
 ```
 
-Incluye minimo 10 pruebas unitarias en `prueba/test_huella_carbono.py`.
+Ejecutar aplicacion:
 
-## Aplicacion de principios SOLID
+```bash
+python -m app.main
+```
 
-- **SRP:** modelo, servicio, persistencia y app estan separados.
-- **OCP:** se pueden agregar nuevos tipos implementando la interfaz.
-- **LSP:** cualquier objeto implementador funciona en la lista polimorfica.
-- **ISP:** interfaz pequena y enfocada al calculo de huella.
-- **DIP:** logica principal depende de `CalculableHuellaCarbono`, no de concreciones.
+Verificar archivo generado:
 
-## Evidencia de rama correcta
+```bash
+type data\huella_carbono.json
+```
 
-La rama final de trabajo es `dev_ltuiran07` y se conserva la estructura:
+## Estrategia de ramas Git
 
-- `main`
-- `develop`
-- `dev_ltuiran07`
+Ramas requeridas y flujo:
 
-Verificacion:
+- `main`: rama principal del repositorio.
+- `develop`: rama de integracion.
+- `dev_ltuiran07`: rama final de trabajo y entrega de codigo.
+
+Comandos de verificacion sugeridos:
 
 ```bash
 git branch
+git branch -a
+git status
 ```
+
+## Evidencias
+
+> Nota: se deja preparada la seccion para adjuntar capturas cuando esten disponibles.
+> Ruta sugerida para imagenes: `docs/evidencias/`.
+
+### Evidencia 1 - Git
+
+- Mostrar ramas locales y remotas con `git branch -a`.
+- Confirmar rama activa `dev_ltuiran07` con `git status`.
+- Imagen pendiente: `docs/evidencias/01-git.png`
+
+### Evidencia 2 - Estructura del proyecto
+
+- Mostrar arbol del proyecto segun la seccion de estructura.
+- Imagen pendiente: `docs/evidencias/02-estructura-proyecto.png`
+
+### Evidencia 3 - Instalacion de dependencias
+
+- Ejecutar `pip install -r requirements.txt` sin errores.
+- Imagen pendiente: `docs/evidencias/03-instalacion-dependencias.png`
+
+### Evidencia 4 - Pruebas unitarias
+
+- Ejecutar `pytest -q`.
+- Resultado esperado: `12 passed`.
+- Imagen pendiente: `docs/evidencias/04-pruebas-unitarias.png`
+
+### Evidencia 5 - Ejecucion del programa
+
+- Ejecutar `python -m app.main`.
+- Mostrar huella por objeto, total y datos leidos desde JSON.
+- Imagen pendiente: `docs/evidencias/05-ejecucion-programa.png`
+
+### Evidencia 6 - Archivo generado
+
+- Verificar creacion de `data/huella_carbono.json`.
+- Imagen pendiente: `docs/evidencias/06-archivo-generado.png`
+
+### Evidencia 7 - Codigo fuente clave
+
+- Interfaz: `modelo/calculable_huella_carbono.py`.
+- Clases de dominio: `modelo/edificio.py`, `modelo/automovil.py`, `modelo/bicicleta.py`.
+- Persistencia: `persistencia/repositorio_huella_json.py`.
+- Main y polimorfismo: `app/main.py`.
+- Imagen pendiente: `docs/evidencias/07-codigo-fuente-clave.png`
+
+### Evidencia 8 - Documentacion
+
+- README completo en `README.md`.
+- Imagen pendiente: `docs/evidencias/08-documentacion.png`
